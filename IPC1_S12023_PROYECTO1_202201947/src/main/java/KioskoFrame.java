@@ -62,6 +62,11 @@ public class KioskoFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         RegionesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "(M) Metropolitana", "(NT) Norte", "(NO) Nororiente", "(SO) Suroriente", "(SOC Suroccidente ", "(NOC) Noroccidente" }));
         RegionesComboBox.setName(""); // NOI18N
@@ -72,6 +77,11 @@ public class KioskoFrame extends javax.swing.JFrame {
         });
 
         CancelarButton.setText("Cancelar");
+        CancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +152,28 @@ public class KioskoFrame extends javax.swing.JFrame {
         opframe.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
+        String hola;
+        // TODO add your handling code here:
+        NomKioscoTextField.setText("");
+        
+        RegionesComboBox.setEnabled(true);
+        NomKioscoTextField.setEnabled(true);
+        
+        
+    }//GEN-LAST:event_CancelarButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        RegionesComboBox.setEnabled(false);
+        NomKioscoTextField.setEnabled(false);
+        //guardar los valores en una lista
+        
+        AdminFrame opframe = new AdminFrame();
+        opframe.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,13 +36,9 @@ public class DepMunFrame extends javax.swing.JFrame {
         RegionLabel = new javax.swing.JLabel();
         RegionLabel1 = new javax.swing.JLabel();
         DepComboBox = new javax.swing.JComboBox<>();
-        gdepButton = new javax.swing.JButton();
-        cdeoButton3 = new javax.swing.JButton();
         RegionLabel2 = new javax.swing.JLabel();
         MunComboBox1 = new javax.swing.JComboBox<>();
-        gmunButton1 = new javax.swing.JButton();
-        cmunButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        regionTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,8 +56,18 @@ public class DepMunFrame extends javax.swing.JFrame {
         });
 
         gcrButton.setText("GUARDAR");
+        gcrButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gcrButtonActionPerformed(evt);
+            }
+        });
 
         ccrButton1.setText("CANCELAR");
+        ccrButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccrButton1ActionPerformed(evt);
+            }
+        });
 
         RegionLabel.setText("REGIÓN: ");
 
@@ -74,10 +80,6 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
-        gdepButton.setText("GUARDAR");
-
-        cdeoButton3.setText("CANCELAR");
-
         RegionLabel2.setText("MUNICIPIO:");
 
         MunComboBox1.setName(""); // NOI18N
@@ -87,11 +89,7 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
-        gmunButton1.setText("GUARDAR");
-
-        cmunButton4.setText("CANCELAR");
-
-        jTextField1.setEnabled(false);
+        regionTextField.setEnabled(false);
 
         jButton1.setText("<--");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,49 +104,38 @@ public class DepMunFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CregLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(RegionLabel))
-                    .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ccrButton1))
+                .addComponent(CregLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(RegionLabel)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(RegionLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cdeoButton3)
-                            .addComponent(gdepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmunButton4)
-                            .addComponent(gmunButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addComponent(RegionLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(155, 155, 155))
+                        .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(489, 489, 489)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
+                .addGap(489, 489, 489)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ccrButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,30 +149,22 @@ public class DepMunFrame extends javax.swing.JFrame {
                             .addComponent(CregLabel)
                             .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RegionLabel)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(gcrButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ccrButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegionLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(gdepButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cdeoButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegionLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(gmunButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmunButton4)))
+                            .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addComponent(gcrButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(RegionLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(RegionLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ccrButton1)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -209,6 +188,25 @@ public class DepMunFrame extends javax.swing.JFrame {
         opframe.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void gcrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gcrButtonActionPerformed
+        // TODO add your handling code here:
+        CodRegComboBox.setEnabled(false);
+        DepComboBox.setEnabled(false);
+        MunComboBox1.setEnabled(false);
+        
+        AdminFrame opframe = new AdminFrame();
+        opframe.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_gcrButtonActionPerformed
+
+    private void ccrButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccrButton1ActionPerformed
+        // TODO add your handling code here:
+        CodRegComboBox.setEnabled(true);
+        DepComboBox.setEnabled(true);
+        MunComboBox1.setEnabled(true);
+    }//GEN-LAST:event_ccrButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,13 +252,9 @@ public class DepMunFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RegionLabel1;
     private javax.swing.JLabel RegionLabel2;
     private javax.swing.JButton ccrButton1;
-    private javax.swing.JButton cdeoButton3;
-    private javax.swing.JButton cmunButton4;
     private javax.swing.JButton gcrButton;
-    private javax.swing.JButton gdepButton;
-    private javax.swing.JButton gmunButton1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField regionTextField;
     // End of variables declaration//GEN-END:variables
 }
