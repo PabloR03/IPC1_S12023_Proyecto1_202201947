@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
      */
     public COTPAGOUSUARIOFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("COTIZACION | PAGO");
@@ -103,8 +107,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel10.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("ORIGEN");
 
+        jButton3.setBackground(new java.awt.Color(102, 204, 255));
+        jButton3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("OK");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +121,14 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("DESTINO");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton4.setBackground(new java.awt.Color(102, 204, 255));
+        jButton4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("OK");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +140,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel12.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("NUMERO DE PAQUETES");
 
+        jLabel13.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("TAMAÑO PAQUETES");
 
         sRadioButton.setText("S (1-10 LB)");
@@ -152,6 +169,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 204, 255));
+        jButton5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("COTIZAR");
 
         jTextField11.setEnabled(false);
@@ -170,8 +190,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel21.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("TIPO DE ENVÍO");
 
+        jButton9.setBackground(new java.awt.Color(102, 204, 255));
+        jButton9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(0, 0, 0));
         jButton9.setText("PROSEGUIR AL PAGO");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +240,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 64, Short.MAX_VALUE))
+                        .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(cotizarPaneLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel12)
@@ -228,10 +253,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                                         .addGap(58, 58, 58)
                                         .addComponent(eRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
-                                        .addComponent(jButton5)
-                                        .addGap(90, 90, 90))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
-                                        .addComponent(jLabel21)
+                                        .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(90, 90, 90)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(cotizarPaneLayout.createSequentialGroup()
@@ -258,10 +282,10 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                         .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
                         .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110))
+                        .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
                         .addComponent(jButton9)
-                        .addGap(195, 195, 195))))
+                        .addGap(171, 171, 171))))
         );
         cotizarPaneLayout.setVerticalGroup(
             cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,17 +332,26 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         Jpane.addTab("COTIZAR", cotizarPane);
 
+        jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NOMBRE COMPLETO");
 
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DIRECCION: ");
 
+        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("NIT;");
 
+        jButton1.setBackground(new java.awt.Color(102, 204, 255));
+        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("GUARDAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,22 +359,35 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("DATOS DE TARJETA DE CREDITO O DÉBITO");
 
+        jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("NOMBRE:");
 
         noTextField.setText("NOMBRE DEL TITULAR DE LA TARJETA");
 
+        jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NUMERO TARJETA:");
 
         nuTextField.setText("NUMERO DE TARJETA DE DEBITO O CREDITO");
 
+        jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("FECHA DE VENCIMIENTO:");
 
+        jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CVV:");
 
         cvTextField.setText("3 DIGITOS DE LA PARTE POSTERIOR DE SU TARJETA");
 
+        jButton2.setBackground(new java.awt.Color(102, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("GUARDAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,6 +395,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        pagarButton.setBackground(new java.awt.Color(102, 204, 255));
+        pagarButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        pagarButton.setForeground(new java.awt.Color(0, 0, 0));
         pagarButton.setText("PAGAR");
         pagarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,13 +484,15 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                     .addComponent(cvTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(pagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
 
         Jpane.addTab("DATOS PAGO", datosPane);
 
+        jLabel14.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("TIPO DE PAGO:");
 
         efeRadioButton.setText("CONTRAENTREGA");
@@ -458,10 +509,16 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("NOMBRE:");
 
+        jLabel16.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("NIT");
 
+        jLabel17.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("DIRECCION");
 
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
@@ -470,10 +527,17 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("TOTAL A PAGAR:");
 
+        jLabel19.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("TOTAL");
 
+        jButton6.setBackground(new java.awt.Color(102, 204, 255));
+        jButton6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("PAGAR");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,10 +547,18 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel20.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("INGRESE CVV:");
 
+        desfButton.setBackground(new java.awt.Color(102, 204, 255));
+        desfButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        desfButton.setForeground(new java.awt.Color(0, 0, 0));
         desfButton.setText("DESCARGAR FACTURA");
 
+        desgButton.setBackground(new java.awt.Color(102, 204, 255));
+        desgButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        desgButton.setForeground(new java.awt.Color(0, 0, 0));
         desgButton.setText("DESCARGAR GUIA");
 
         javax.swing.GroupLayout pagoPaneLayout = new javax.swing.GroupLayout(pagoPane);
@@ -494,7 +566,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         pagoPaneLayout.setHorizontalGroup(
             pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
                         .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,7 +611,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             .addGroup(pagoPaneLayout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(desfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addComponent(desgButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -557,7 +629,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -584,8 +656,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         Jpane.addTab("PAGO", pagoPane);
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("DELIVERY USAC");
 
+        jButton7.setBackground(new java.awt.Color(255, 255, 102));
+        jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setText("<--");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -593,6 +669,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(255, 255, 102));
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setText("<--");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -630,7 +708,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton8))
                     .addComponent(Jpane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

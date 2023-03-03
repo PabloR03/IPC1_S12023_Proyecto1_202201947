@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,7 @@ public class DepMunFrame extends javax.swing.JFrame {
      */
     public DepMunFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("DEPARTAMENTOS Y MUNICIPIOS");
@@ -43,8 +47,12 @@ public class DepMunFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANEJO DE DEPARTAMENTOS Y MUNICIPIOS");
 
+        CregLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        CregLabel.setForeground(new java.awt.Color(255, 255, 255));
         CregLabel.setText("CODIGO DE REGIÓN: ");
 
         CodRegComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC" }));
@@ -55,6 +63,8 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        gcrButton.setBackground(new java.awt.Color(102, 204, 255));
+        gcrButton.setForeground(new java.awt.Color(0, 0, 0));
         gcrButton.setText("GUARDAR");
         gcrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +72,8 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        ccrButton1.setBackground(new java.awt.Color(255, 102, 102));
+        ccrButton1.setForeground(new java.awt.Color(0, 0, 0));
         ccrButton1.setText("CANCELAR");
         ccrButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,8 +81,12 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        RegionLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        RegionLabel.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel.setText("REGIÓN: ");
 
+        RegionLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        RegionLabel1.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel1.setText("DEPARTAMENTO");
 
         DepComboBox.setName(""); // NOI18N
@@ -80,6 +96,8 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        RegionLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        RegionLabel2.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel2.setText("MUNICIPIO:");
 
         MunComboBox1.setName(""); // NOI18N
@@ -91,6 +109,8 @@ public class DepMunFrame extends javax.swing.JFrame {
 
         regionTextField.setEnabled(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("<--");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +137,7 @@ public class DepMunFrame extends javax.swing.JFrame {
                         .addComponent(RegionLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addComponent(RegionLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)

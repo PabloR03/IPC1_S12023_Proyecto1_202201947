@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,7 @@ public class AdminFrame extends javax.swing.JFrame {
      */
     public AdminFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("ADMINISTRADOR");
@@ -39,9 +43,12 @@ public class AdminFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDO ADMIN");
 
+        regresarButton.setBackground(new java.awt.Color(255, 255, 102));
+        regresarButton.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         regresarButton.setText("<--");
         regresarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +56,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        KioscoButton.setBackground(new java.awt.Color(102, 204, 255));
+        KioscoButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        KioscoButton.setForeground(new java.awt.Color(0, 0, 0));
         KioscoButton.setText("MANEJO KIOSKOS");
         KioscoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +66,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        RegPrecButton.setBackground(new java.awt.Color(102, 204, 255));
+        RegPrecButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        RegPrecButton.setForeground(new java.awt.Color(0, 0, 0));
         RegPrecButton.setText("MANEJO REGIONES Y PRECIOS");
         RegPrecButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +76,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        DepMunButton.setBackground(new java.awt.Color(102, 204, 255));
+        DepMunButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        DepMunButton.setForeground(new java.awt.Color(0, 0, 0));
         DepMunButton.setText("MANEJO DEP Y MUN");
         DepMunButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +86,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        ReporteButton.setBackground(new java.awt.Color(102, 204, 255));
+        ReporteButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        ReporteButton.setForeground(new java.awt.Color(0, 0, 0));
         ReporteButton.setText("REPORTES");
         ReporteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +96,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        AgregarUsuarioButton.setBackground(new java.awt.Color(102, 204, 255));
+        AgregarUsuarioButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        AgregarUsuarioButton.setForeground(new java.awt.Color(0, 0, 0));
         AgregarUsuarioButton.setText("AGREGAR USUARIO");
         AgregarUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +106,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 204, 255));
+        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("COTIZACION | PAGO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,24 +136,24 @@ public class AdminFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(DepMunButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ReporteButton)))))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(193, 193, 193))
+                                .addComponent(ReporteButton))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(jLabel1)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(regresarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(KioscoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)

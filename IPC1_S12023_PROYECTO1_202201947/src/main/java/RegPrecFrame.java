@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,7 @@ public class RegPrecFrame extends javax.swing.JFrame {
      */
     public RegPrecFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("REGISTRO DE PRECIOS");
@@ -52,6 +56,9 @@ public class RegPrecFrame extends javax.swing.JFrame {
             }
         });
 
+        gcrButton.setBackground(new java.awt.Color(102, 204, 255));
+        gcrButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        gcrButton.setForeground(new java.awt.Color(0, 0, 0));
         gcrButton.setText("APLICAR");
         gcrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,8 +66,13 @@ public class RegPrecFrame extends javax.swing.JFrame {
             }
         });
 
+        RegionLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        RegionLabel1.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel1.setText("PRECIO ESTANDAR:");
 
+        GButton.setBackground(new java.awt.Color(102, 204, 255));
+        GButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        GButton.setForeground(new java.awt.Color(0, 0, 0));
         GButton.setText("GUARDAR");
         GButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +80,9 @@ public class RegPrecFrame extends javax.swing.JFrame {
             }
         });
 
+        Cbutton.setBackground(new java.awt.Color(255, 51, 51));
+        Cbutton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        Cbutton.setForeground(new java.awt.Color(0, 0, 0));
         Cbutton.setText("CANCELAR");
         Cbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,16 +90,26 @@ public class RegPrecFrame extends javax.swing.JFrame {
             }
         });
 
+        RegionLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        RegionLabel2.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel2.setText("PRECIO ESPECIAL:");
 
+        RegionLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        RegionLabel.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel.setText("REGIÓN: ");
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANEJO DE DEPARTAMENTOS Y MUNICIPIOS");
 
+        CregLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        CregLabel.setForeground(new java.awt.Color(255, 255, 255));
         CregLabel.setText("CODIGO DE REGIÓN: ");
 
         RegTextField.setEnabled(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("<--");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,11 +152,11 @@ public class RegPrecFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(RegionLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(peTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                        .addComponent(peTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                         .addGap(24, 24, 24)
                         .addComponent(RegionLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(EspTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE))))
+                        .addComponent(EspTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +173,7 @@ public class RegPrecFrame extends javax.swing.JFrame {
                             .addComponent(RegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(gcrButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(Cbutton)))

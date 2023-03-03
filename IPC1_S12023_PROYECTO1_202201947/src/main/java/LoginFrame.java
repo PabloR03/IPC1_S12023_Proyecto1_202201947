@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,6 +18,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("LOGIN");
@@ -42,15 +44,23 @@ public class LoginFrame extends javax.swing.JFrame {
         CrearButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(51, 51, 51));
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
         jLabel1.setText("CORREO:");
 
+        nombreTextField.setForeground(new java.awt.Color(153, 153, 153));
         nombreTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreTextFieldActionPerformed(evt);
             }
         });
 
+        ingresarButton.setBackground(new java.awt.Color(153, 153, 153));
+        ingresarButton.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        ingresarButton.setForeground(new java.awt.Color(204, 204, 255));
         ingresarButton.setText("INGRESAR");
         ingresarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,16 +68,24 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
         jLabel2.setText("CONTRASEÑA:");
 
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
         jLabel3.setText("LOGIN");
 
+        contrasenaTextField.setForeground(new java.awt.Color(153, 153, 153));
         contrasenaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contrasenaTextFieldActionPerformed(evt);
             }
         });
 
+        CrearButton.setBackground(new java.awt.Color(153, 153, 153));
+        CrearButton.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        CrearButton.setForeground(new java.awt.Color(204, 204, 255));
         CrearButton.setText("CREAR USUARIO");
         CrearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

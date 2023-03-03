@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,7 @@ public class ReportesFrame extends javax.swing.JFrame {
      */
     public ReportesFrame() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("REPORTES");
@@ -78,8 +82,12 @@ public class ReportesFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("USUARIOS CON MAS PAQUETES", jScrollPane4);
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REPORTES");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("<--");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
