@@ -216,6 +216,8 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         COTPAGOUSUARIOFrame cpuframe = new COTPAGOUSUARIOFrame();
         cpuframe.setVisible(true);
+        cpuframe.jButton8.setVisible(false);
+        cpuframe.jButton7.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

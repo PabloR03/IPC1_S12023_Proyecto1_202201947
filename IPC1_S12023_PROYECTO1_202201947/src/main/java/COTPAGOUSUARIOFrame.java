@@ -761,8 +761,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        LoginFrame opframe = new LoginFrame();
-        opframe.setVisible(true);
+        UsuarioMenuJFRAME muframe = new UsuarioMenuJFRAME();
+        muframe.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -921,8 +921,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    public javax.swing.JButton jButton7;
+    public javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
