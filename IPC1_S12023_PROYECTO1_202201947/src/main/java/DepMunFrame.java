@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,11 +12,13 @@ import java.awt.Color;
  *
  * @author Pablo Rodriguez
  */
+
 public class DepMunFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form DepMunFrame
      */
+    
     public DepMunFrame() {
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -41,9 +45,9 @@ public class DepMunFrame extends javax.swing.JFrame {
         RegionLabel1 = new javax.swing.JLabel();
         DepComboBox = new javax.swing.JComboBox<>();
         RegionLabel2 = new javax.swing.JLabel();
-        MunComboBox1 = new javax.swing.JComboBox<>();
         regionTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        munTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,13 +104,6 @@ public class DepMunFrame extends javax.swing.JFrame {
         RegionLabel2.setForeground(new java.awt.Color(255, 255, 255));
         RegionLabel2.setText("MUNICIPIO:");
 
-        MunComboBox1.setName(""); // NOI18N
-        MunComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MunComboBox1ActionPerformed(evt);
-            }
-        });
-
         regionTextField.setEnabled(false);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 102));
@@ -118,73 +115,78 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        munTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                munTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(CregLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(RegionLabel)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(RegionLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                        .addComponent(RegionLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(155, 155, 155))
+                        .addComponent(jLabel1)
+                        .addGap(0, 30, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(489, 489, 489)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(RegionLabel2)
+                            .addComponent(RegionLabel1)
+                            .addComponent(CregLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(RegionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(DepComboBox, 0, 182, Short.MAX_VALUE)
+                                    .addComponent(munTextField))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ccrButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CregLabel)
-                            .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RegionLabel)
-                            .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addComponent(gcrButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RegionLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RegionLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(MunComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CregLabel)
+                    .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegionLabel)
+                    .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegionLabel1)
+                    .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegionLabel2)
+                    .addComponent(munTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addComponent(gcrButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(ccrButton1))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ccrButton1)
-                .addGap(19, 19, 19))
         );
 
         pack();
@@ -198,10 +200,6 @@ public class DepMunFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DepComboBoxActionPerformed
 
-    private void MunComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MunComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MunComboBox1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         AdminFrame opframe = new AdminFrame();
@@ -213,7 +211,17 @@ public class DepMunFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         CodRegComboBox.setEnabled(false);
         DepComboBox.setEnabled(false);
-        MunComboBox1.setEnabled(false);
+        munTextField.setEnabled(false);
+        
+        String mun = munTextField.getText();
+        Municipio municip = new Municipio();
+        municip.muni = mun;
+        AppState.listaMunicipio.add(municip);
+        JOptionPane.showMessageDialog(null, "Municipio Registrado Correctamente");
+        for(int i = 0; i<AppState.listaMunicipio.size(); i++){
+        
+        }
+                
         
         AdminFrame opframe = new AdminFrame();
         opframe.setVisible(true);
@@ -225,8 +233,12 @@ public class DepMunFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         CodRegComboBox.setEnabled(true);
         DepComboBox.setEnabled(true);
-        MunComboBox1.setEnabled(true);
+        munTextField.setEnabled(true);
     }//GEN-LAST:event_ccrButton1ActionPerformed
+
+    private void munTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_munTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,7 +279,6 @@ public class DepMunFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CodRegComboBox;
     private javax.swing.JLabel CregLabel;
     private javax.swing.JComboBox<String> DepComboBox;
-    private javax.swing.JComboBox<String> MunComboBox1;
     private javax.swing.JLabel RegionLabel;
     private javax.swing.JLabel RegionLabel1;
     private javax.swing.JLabel RegionLabel2;
@@ -275,6 +286,7 @@ public class DepMunFrame extends javax.swing.JFrame {
     private javax.swing.JButton gcrButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField munTextField;
     private javax.swing.JTextField regionTextField;
     // End of variables declaration//GEN-END:variables
 }

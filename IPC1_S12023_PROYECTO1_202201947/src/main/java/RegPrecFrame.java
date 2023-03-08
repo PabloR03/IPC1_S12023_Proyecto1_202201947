@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -11,7 +12,8 @@ import java.awt.Color;
  * @author Pablo Rodriguez
  */
 public class RegPrecFrame extends javax.swing.JFrame {
-
+           static double precesnum;
+           static double precespnum;
     /**
      * Creates new form RegPrecFrame
      */
@@ -32,7 +34,6 @@ public class RegPrecFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CodRegComboBox = new javax.swing.JComboBox<>();
         gcrButton = new javax.swing.JButton();
         RegionLabel1 = new javax.swing.JLabel();
         GButton = new javax.swing.JButton();
@@ -45,16 +46,11 @@ public class RegPrecFrame extends javax.swing.JFrame {
         EspTextField = new javax.swing.JTextField();
         peTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        CodRegComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        CodRegComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC" }));
-        CodRegComboBox.setName(""); // NOI18N
-        CodRegComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodRegComboBoxActionPerformed(evt);
-            }
-        });
 
         gcrButton.setBackground(new java.awt.Color(102, 204, 255));
         gcrButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
@@ -117,6 +113,18 @@ public class RegPrecFrame extends javax.swing.JFrame {
             }
         });
 
+        CodRegComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC", " " }));
+        CodRegComboBox.setName(""); // NOI18N
+        CodRegComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CodRegComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,84 +132,101 @@ public class RegPrecFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(489, 489, 489)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(CregLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(207, 207, 207)
-                        .addComponent(GButton, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(RegionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(RegionLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(peTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                        .addGap(24, 24, 24)
-                        .addComponent(RegionLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(EspTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addComponent(gcrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CregLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(24, 24, 24)
+                                                .addComponent(RegionLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(RegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(RegionLabel1)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(peTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(RegionLabel2))
+                                            .addComponent(GButton, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Cbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(EspTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(25, 25, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CregLabel)
+                    .addComponent(RegionLabel)
+                    .addComponent(RegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(gcrButton)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegionLabel1)
+                    .addComponent(peTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegionLabel2)
+                    .addComponent(EspTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CregLabel)
-                            .addComponent(CodRegComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RegionLabel)
-                            .addComponent(RegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(gcrButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(Cbutton)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(RegionLabel1)
-                                .addComponent(peTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(RegionLabel2)
-                                .addComponent(EspTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(GButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(GButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(Cbutton)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CodRegComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodRegComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CodRegComboBoxActionPerformed
-
     private void GButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GButtonActionPerformed
         // TODO add your handling code here:
+        String estnuevo = (String)peTextField.getText();
+        double est = Double.parseDouble(estnuevo);
+        precesnum = est;
+        
+        String espnuevo = (String)EspTextField.getText();
+        double esp = Double.parseDouble(espnuevo);
+        precespnum = esp;
+        
+        String estnuvo = Double.toString(precesnum);
+        jLabel2.setText(estnuvo);
+        String espnuvo = Double.toString(precespnum);
+        jLabel3.setText(espnuvo);
+        
         peTextField.setEnabled(false);
         EspTextField.setEnabled(false);
+        
+        JOptionPane.showMessageDialog(null,"NUEVOS PRECIOS GUARDADOS");
+
         AdminFrame opframe = new AdminFrame();
         opframe.setVisible(true);
         dispose();
@@ -219,6 +244,50 @@ public class RegPrecFrame extends javax.swing.JFrame {
         CodRegComboBox.setEnabled(false);
         RegTextField.setEnabled(false);
         
+        String codReg = (String)CodRegComboBox.getSelectedItem();
+        switch (codReg) {
+            case "M" -> RegTextField.setText("Metropolitano");
+            case "NT" -> RegTextField.setText("Norte");
+            case "NO" -> RegTextField.setText("NorOriente");
+            case "SO" -> RegTextField.setText("Suroriente");
+            case "SOC" -> RegTextField.setText("SurOccidente");
+            case "NOC" -> RegTextField.setText("NorOccidente");
+        } 
+        String Reg = (String)RegTextField.getText();
+        if(Reg.equals("Metropolitano")){
+            precesnum = 35;
+            precespnum = 25;
+            peTextField.setText("35");
+            EspTextField.setText("25");
+        }else if(Reg.equals("Norte")){
+            precesnum = 68.50;
+            precespnum = 45.55;
+            peTextField.setText("68.50");
+            EspTextField.setText("45.55");
+        }else if(Reg.equals("NorOriente")){
+            precesnum = 58.68;
+            precespnum = 35.48;
+            peTextField.setText("58.68");
+            EspTextField.setText("35.48");
+        }else if(Reg.equals("Suroriente")){
+            precesnum = 38.68;
+            precespnum = 32.48;
+            peTextField.setText("38.68");
+            EspTextField.setText("32.48");
+        }else if(Reg.equals("SurOccidente")){
+            precesnum = 34;
+            precespnum = 29;
+            peTextField.setText("34");
+            EspTextField.setText("29");
+        }else if(Reg.equals("NorOccidente")){
+            precesnum = 44.5;
+            precespnum = 40;
+            peTextField.setText("44.5");
+            EspTextField.setText("40");
+        }
+        
+        JOptionPane.showMessageDialog(null,"REGION SELECCIONADA");
+        
     }//GEN-LAST:event_gcrButtonActionPerformed
 
     private void CbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbuttonActionPerformed
@@ -230,6 +299,10 @@ public class RegPrecFrame extends javax.swing.JFrame {
         CodRegComboBox.setEnabled(true);
 
     }//GEN-LAST:event_CbuttonActionPerformed
+
+    private void CodRegComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodRegComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CodRegComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,6 +352,8 @@ public class RegPrecFrame extends javax.swing.JFrame {
     private javax.swing.JButton gcrButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField peTextField;
     // End of variables declaration//GEN-END:variables
 }

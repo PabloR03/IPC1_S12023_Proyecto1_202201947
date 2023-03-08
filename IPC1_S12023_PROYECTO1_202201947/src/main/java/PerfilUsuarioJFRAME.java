@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,10 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
      */
     public PerfilUsuarioJFRAME() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("LOGIN");
     }
 
     /**
