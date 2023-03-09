@@ -153,24 +153,52 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreTextFieldActionPerformed
 
     private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
-        // TODO add your handling code here:
-        String nombre = nombreTextField.getText();
-        String contrasena = contrasenaTextField.getText();
+    String usuario =nombreTextField.getText();
+        String contra = contrasenaTextField.getText();
         
-        if(nombre.equals("pablo") && contrasena.equals("123"))
-        {
-            AdminFrame opframe = new AdminFrame();
-            opframe.setVisible(true);
+        if(nombreTextField.getText().isEmpty()||contrasenaTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campos Vacíos, Debe llenar todos los campos.", "LOGIN", JOptionPane.ERROR_MESSAGE); 
+        }   
+        else if(usuario.equals("pablo") && contra.equals("123")){      
+            AdminFrame mena = new AdminFrame();
+            mena.setVisible(true);
             dispose();
+            JOptionPane.showMessageDialog(null, "Bievenido Administrador", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+        }else if(!usuario.equals("manuel") && !contra.equals("1234")){
+          
+            boolean existe=false;
+            for (int i=0;i<AppState.listaUsuario.size();i++){
+                if (nombreTextField.getText().toString().equals(AppState.listaUsuario.get(i).getcorreo().toString())==true||contrasenaTextField.getText().toString().equals(AppState.listaUsuario.get(i).getpassword().toString())==true){
+                    existe=true;
+                    break;
+                }
+            }
+            if(existe){
+                boolean validarUsuario=false;
+                for (int i=0;i<AppState.listaUsuario.size();i++){
+                    if (nombreTextField.getText().toString().equals(AppState.listaUsuario.get(i).getcorreo().toString())==true&&contrasenaTextField.getText().toString().equals(AppState.listaUsuario.get(i).getpassword().toString())==true){
+                        validarUsuario=true;
+                        break;
+                    }
+                }
+                if(validarUsuario){
+                    UsuarioMenuJFRAME ASD = new UsuarioMenuJFRAME();
+                    ASD.setVisible(true);
+                    String correo1 = nombreTextField.getText();
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Bievenido Usuario", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Correo o Contraseña Incorrectos USUARIO", "LOGIN", JOptionPane.WARNING_MESSAGE);   
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "El correo no está registrado", "LOGIN", JOptionPane.WARNING_MESSAGE);
+                nombreTextField.setText(null);
+                contrasenaTextField.setText(null);
+            }
         }
-        else
-        {
-        JOptionPane.showMessageDialog(null,"Usuario / Contraseña incorrecta, intente de nuevo");
-        nombreTextField.setText(null);
-        contrasenaTextField.setText(null);
-        
+        else{
+            JOptionPane.showMessageDialog(null, "Correo o Contraseña Incorrectos ADMIN", "LOGIN", JOptionPane.WARNING_MESSAGE);   
         }
-        
     }//GEN-LAST:event_ingresarButtonActionPerformed
 
     private void contrasenaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaTextFieldActionPerformed

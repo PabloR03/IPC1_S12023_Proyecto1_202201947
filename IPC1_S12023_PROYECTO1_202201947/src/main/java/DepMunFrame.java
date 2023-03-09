@@ -194,6 +194,41 @@ public class DepMunFrame extends javax.swing.JFrame {
 
     private void CodRegComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodRegComboBoxActionPerformed
         // TODO add your handling code here:
+        String codReg = (String)CodRegComboBox.getSelectedItem();
+        switch (codReg) {
+            case "M" -> regionTextField.setText("Metropolitano");
+            case "NT" -> regionTextField.setText("Norte");
+            case "NO" -> regionTextField.setText("NorOriente");
+            case "SO" -> regionTextField.setText("Suroriente");
+            case "SOC" -> regionTextField.setText("SurOccidente");
+            case "NOC" -> regionTextField.setText("NorOccidente");
+        }
+        
+        if(codReg.equals("M")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("GUATEMALA");
+        }
+        else if(codReg.equals("NT")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("PETEN");
+            DepComboBox.addItem("ALTA VERAPAZ");
+        }else if(codReg.equals("NO")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("ZACAPA");
+            DepComboBox.addItem("IZABAL");
+        }else if(codReg.equals("SO")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("JALAPA");
+            DepComboBox.addItem("JUTIAPA");
+        }else if(codReg.equals("SOC")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("SUCHITEPEQUEZ");
+            DepComboBox.addItem("QUETZALTENANGO");
+        }else if(codReg.equals("NOC")){
+            DepComboBox.removeAllItems();
+            DepComboBox.addItem("HUEHUETENANGO");
+            DepComboBox.addItem("QUICHE");
+        }
     }//GEN-LAST:event_CodRegComboBoxActionPerformed
 
     private void DepComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepComboBoxActionPerformed
@@ -213,14 +248,7 @@ public class DepMunFrame extends javax.swing.JFrame {
         DepComboBox.setEnabled(false);
         munTextField.setEnabled(false);
         
-        String mun = munTextField.getText();
-        Municipio municip = new Municipio();
-        municip.muni = mun;
-        AppState.listaMunicipio.add(municip);
-        JOptionPane.showMessageDialog(null, "Municipio Registrado Correctamente");
-        for(int i = 0; i<AppState.listaMunicipio.size(); i++){
         
-        }
                 
         
         AdminFrame opframe = new AdminFrame();

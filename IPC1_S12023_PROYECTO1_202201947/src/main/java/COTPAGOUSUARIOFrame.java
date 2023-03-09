@@ -15,6 +15,22 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     /**
      * Creates new form COTPAGOUSUARIOFrame
      */
+    public static String censurarNumero(String tarjeta) {
+    int longitud = tarjeta.length();
+    if (longitud <= 4) {
+        return tarjeta;
+    } else {
+        String ultimosDigitos = tarjeta.substring(longitud - 4, longitud);
+        String reemplazo = "";
+        for (int i = 0; i < longitud - 4; i++) {
+            reemplazo += "*";
+        }
+        return reemplazo + ultimosDigitos;
+    }
+}
+
+    static double total=0;
+    public double precesnume, precespnume;
     public COTPAGOUSUARIOFrame() {
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -72,11 +88,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         nuTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        feTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         cvTextField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         pagarButton = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         pagoPane = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         efeRadioButton = new javax.swing.JRadioButton();
@@ -95,6 +111,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         desfButton = new javax.swing.JButton();
         desgButton = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -138,7 +155,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("DESTINO");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC" }));
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -154,8 +171,6 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -190,10 +205,21 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("COTIZAR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jTextField11.setEnabled(false);
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
 
         nRadioButton.setText("NORMAL");
+        nRadioButton.setEnabled(false);
         nRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nRadioButtonActionPerformed(evt);
@@ -201,6 +227,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         });
 
         eRadioButton.setText("ESPECIAL");
+        eRadioButton.setEnabled(false);
         eRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eRadioButtonActionPerformed(evt);
@@ -351,15 +378,15 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         Jpane.addTab("COTIZAR", cotizarPane);
 
         jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOMBRE COMPLETO");
 
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("DIRECCION: ");
 
         jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("NIT;");
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
@@ -373,30 +400,40 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("DATOS DE TARJETA DE CREDITO O DÉBITO");
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("NOMBRE:");
 
         noTextField.setText("NOMBRE DEL TITULAR DE LA TARJETA");
+        noTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("NUMERO TARJETA:");
 
         nuTextField.setText("NUMERO DE TARJETA DE DEBITO O CREDITO");
 
         jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("FECHA DE VENCIMIENTO:");
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CVV:");
 
         cvTextField.setText("3 DIGITOS DE LA PARTE POSTERIOR DE SU TARJETA");
+        cvTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvTextFieldActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(102, 204, 255));
         jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
@@ -447,9 +484,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                                     .addComponent(nitTextField)
                                     .addComponent(noTextField)
                                     .addComponent(nuTextField)
-                                    .addComponent(feTextField)
-                                    .addComponent(cvTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                                    .addComponent(cvTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,9 +525,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(nuTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
-                    .addComponent(feTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -534,6 +571,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("DIRECCION");
 
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
+
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField14ActionPerformed(evt);
@@ -558,7 +601,14 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setEnabled(false);
+        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox7ActionPerformed(evt);
+            }
+        });
+
+        jTextField15.setEnabled(false);
 
         jLabel20.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -574,30 +624,38 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         desgButton.setForeground(new java.awt.Color(0, 0, 0));
         desgButton.setText("DESCARGAR GUIA");
 
+        jLabel22.setText("EL PAGO CONTRA ENTREGA HACE UN RECARGO DE Q5.00");
+
         javax.swing.GroupLayout pagoPaneLayout = new javax.swing.GroupLayout(pagoPane);
         pagoPane.setLayout(pagoPaneLayout);
         pagoPaneLayout.setHorizontalGroup(
             pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pagoPaneLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(desfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(desgButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
                         .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pagoPaneLayout.createSequentialGroup()
-                                .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17))
-                                .addGap(46, 46, 46)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
+                                .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(36, 36, 36)
                                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField12)
                                     .addComponent(jTextField13)
                                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pagoPaneLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
                                 .addComponent(jLabel18)
-                                .addGap(61, 61, 61)
-                                .addComponent(jLabel19)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19)
+                                .addGap(43, 43, 43)))
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
                         .addComponent(jLabel20)
@@ -619,14 +677,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                         .addComponent(efeRadioButton)
                         .addGap(18, 18, 18)
                         .addComponent(tarRadioButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 73, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pagoPaneLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)))
                 .addContainerGap())
-            .addGroup(pagoPaneLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(desfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(desgButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         pagoPaneLayout.setVerticalGroup(
             pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -642,19 +698,21 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
                 .addGroup(pagoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
@@ -732,9 +790,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         if(sRadioButton.isSelected()){
         mRadioButton.setEnabled(false);
         xlRadioButton.setEnabled(false);
+        eRadioButton.setEnabled(true);
+        nRadioButton.setEnabled(true);
         }else{
         mRadioButton.setEnabled(true);
-        xlRadioButton.setEnabled(true);    
+        xlRadioButton.setEnabled(true);
+        eRadioButton.setEnabled(false);
+        nRadioButton.setEnabled(false);
         }
         
     }//GEN-LAST:event_sRadioButtonActionPerformed
@@ -744,9 +806,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         if(mRadioButton.isSelected()){
         sRadioButton.setEnabled(false);
         xlRadioButton.setEnabled(false);
+        eRadioButton.setEnabled(true);
+        nRadioButton.setEnabled(true);
         }else{
         sRadioButton.setEnabled(true);
-        xlRadioButton.setEnabled(true);    
+        xlRadioButton.setEnabled(true);
+        eRadioButton.setEnabled(false);
+        nRadioButton.setEnabled(false);
         }
     }//GEN-LAST:event_mRadioButtonActionPerformed
 
@@ -755,9 +821,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         if(xlRadioButton.isSelected()){
         sRadioButton.setEnabled(false);
         mRadioButton.setEnabled(false);
+        eRadioButton.setEnabled(true);
+        nRadioButton.setEnabled(true);
         }else{
         sRadioButton.setEnabled(true);
-        mRadioButton.setEnabled(true);    
+        mRadioButton.setEnabled(true);
+        eRadioButton.setEnabled(false);
+        nRadioButton.setEnabled(false);
         }
     }//GEN-LAST:event_xlRadioButtonActionPerformed
 
@@ -799,7 +869,24 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void eRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eRadioButtonActionPerformed
         // TODO add your handling code here:
         if(eRadioButton.isSelected()){
+        RegPrecFrame regpre = new RegPrecFrame();
         nRadioButton.setEnabled(false);
+        
+        
+        String eg = (String)jTextField9.getText();
+        if(eg.equals("Metropolitano")){
+            precespnume = regpre.precesnum;
+        }else if(eg.equals("Norte")){
+            precespnume = regpre.precespnum;
+        }else if(eg.equals("NorOriente")){
+            precespnume = regpre.precespnum;
+        }else if(eg.equals("Suroriente")){
+            precespnume = regpre.precespnum;
+        }else if(eg.equals("SurOccidente")){
+            precespnume = regpre.precespnum;
+        }else if(eg.equals("NorOccidente")){
+            precespnume = regpre.precespnum;
+        }
         }else{
         nRadioButton.setEnabled(true);
         }
@@ -807,8 +894,25 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void nRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nRadioButtonActionPerformed
         // TODO add your handling code here:
+        RegPrecFrame regpre = new RegPrecFrame();
         if(nRadioButton.isSelected()){
         eRadioButton.setEnabled(false);
+        
+        String Reg = (String)jTextField9.getText();
+        if(Reg.equals("Metropolitano")){
+            precesnume = regpre.precesnum;
+        }else if(Reg.equals("Norte")){
+            precesnume = regpre.precesnum;
+        }else if(Reg.equals("NorOriente")){
+            precesnume = regpre.precesnum;
+        }else if(Reg.equals("Suroriente")){
+            precesnume = regpre.precesnum;
+        }else if(Reg.equals("SurOccidente")){
+            precesnume = regpre.precesnum;
+        }else if(Reg.equals("NorOccidente")){
+            precesnume = regpre.precesnum;
+        }
+        
         }else{
         eRadioButton.setEnabled(true);
         }
@@ -821,6 +925,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void pagarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarButtonActionPerformed
         // TODO add your handling code here:
+        String nombre = ncTextField.getText();
+        jTextField12.setText(nombre);
+        String direccion = dTextField.getText();
+        jTextField13.setText(direccion);
+        String nit = nitTextField.getText();
+        jTextField14.setText(nit);
+        
         pagoPane.setEnabled(true);
         desfButton.setVisible(false);
         desgButton.setVisible(false);
@@ -828,6 +939,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nombre = ncTextField.getText();
+        String direc = dTextField.getText();
+        String nit = nitTextField.getText();
+        
+        System.out.println(nombre);
+        
         nitTextField.setEnabled(false);
         ncTextField.setEnabled(false);
         dTextField.setEnabled(false);
@@ -837,10 +954,13 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        noTextField.setEnabled(false);
-        nuTextField.setEnabled(false);
-        feTextField.setEnabled(false);
-        cvTextField.setEnabled(false);
+        
+        String tarjeta = nuTextField.getText();
+        String numeroCensurado = censurarNumero(tarjeta);
+        System.out.println(numeroCensurado);
+        jComboBox7.addItem(numeroCensurado);
+        
+
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -848,6 +968,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(efeRadioButton.isSelected()){
             tarRadioButton.setEnabled(false);
+            jLabel22.setVisible(true);
+            
         }else{
             tarRadioButton.setEnabled(true);
         }
@@ -857,6 +979,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(tarRadioButton.isSelected()){
             efeRadioButton.setEnabled(false);
+            jTextField15.setEnabled(true);
+            jComboBox7.setEnabled(true);
         }else{
             efeRadioButton.setEnabled(true);
         }
@@ -864,6 +988,22 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        if(efeRadioButton.isSelected()){
+            jLabel22.setVisible(true);
+            double totall;
+            totall = total + 5;
+            String tota = Double.toString(totall);
+            jLabel19.setText(tota);
+
+            
+        }else{
+            tarRadioButton.setEnabled(true);
+            jLabel22.setVisible(true);
+            double totall;
+            totall = total;
+            String tota = Double.toString(totall);
+            jLabel19.setText(tota);
+        }
         jTextField14.setEnabled(false);
         jTextField13.setEnabled(false);
         jTextField12.setEnabled(false);
@@ -935,42 +1075,113 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:String codReg = (String)jComboBox1.getSelectedItem();
-        String codreg = (String)jComboBox1.getSelectedItem();
+        String codreg = (String)jComboBox4.getSelectedItem();
         switch (codreg) {
-            case "M" -> jTextField8.setText("Metropolitano");
-            case "NT" -> jTextField8.setText("Norte");
-            case "NO" -> jTextField8.setText("NorOriente");
-            case "SO" -> jTextField8.setText("Suroriente");
-            case "SOC" -> jTextField8.setText("SurOccidente");
-            case "NOC" -> jTextField8.setText("NorOccidente");
+            case "M" -> jTextField9.setText("Metropolitano");
+            case "NT" -> jTextField9.setText("Norte");
+            case "NO" -> jTextField9.setText("NorOriente");
+            case "SO" -> jTextField9.setText("Suroriente");
+            case "SOC" -> jTextField9.setText("SurOccidente");
+            case "NOC" -> jTextField9.setText("NorOccidente");
         }
         
         if(codreg.equals("M")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("GUATEMALA");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("GUATEMALA");
         }
         else if(codreg.equals("NT")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("PETEN");
-            jComboBox2.addItem("ALTA VERAPAZ");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("PETEN");
+            jComboBox5.addItem("ALTA VERAPAZ");
         }else if(codreg.equals("NO")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("ZACAPA");
-            jComboBox2.addItem("IZABAL");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("ZACAPA");
+            jComboBox5.addItem("IZABAL");
         }else if(codreg.equals("SO")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("JALAPA");
-            jComboBox2.addItem("JUTIAPA");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("JALAPA");
+            jComboBox5.addItem("JUTIAPA");
         }else if(codreg.equals("SOC")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("SUCHITEPEQUEZ");
-            jComboBox2.addItem("QUETZALTENANGO");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("SUCHITEPEQUEZ");
+            jComboBox5.addItem("QUETZALTENANGO");
         }else if(codreg.equals("NOC")){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("HUEHUETENANGO");
-            jComboBox2.addItem("QUICHE");
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("HUEHUETENANGO");
+            jComboBox5.addItem("QUICHE");
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        double s=0, m=5, xl=10;
+        
+        String can = jTextField10.getText();
+        Double cantidad = Double.parseDouble(can);
+        if(nRadioButton.isSelected()){
+            
+        if(sRadioButton.isSelected()){
+            total = (s * cantidad)+ precesnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }else if(mRadioButton.isSelected()){
+            total = (m * cantidad)+ precesnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }else if(xlRadioButton.isSelected()){
+            total = (xl * cantidad) + precesnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }
+        } else if(eRadioButton.isSelected()){
+            
+        if(sRadioButton.isSelected()){
+            total = (s * cantidad)+ precespnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }else if(mRadioButton.isSelected()){
+            total = (m * cantidad)+ precespnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }else if(xlRadioButton.isSelected()){
+            total = (xl * cantidad) + precespnume;
+            String to = Double.toString(total);
+            jTextField11.setText(to);
+            
+        }
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox7ActionPerformed
+
+    private void cvTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cvTextFieldActionPerformed
+
+    private void noTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1017,7 +1228,6 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JButton desgButton;
     private javax.swing.JRadioButton eRadioButton;
     private javax.swing.JRadioButton efeRadioButton;
-    private javax.swing.JTextField feTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1032,6 +1242,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox7;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1046,6 +1257,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -1,8 +1,8 @@
 
 import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.io.File;
 import javax.swing.*;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,16 +11,18 @@ import javax.swing.*;
 
 
 public class UsuariosFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form UsuariosFrame
-     */
+    public int a=2;
+    public String genero= "", rol="";
     public UsuariosFrame() {
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("AGREGAR USUARIOS");
+        for(int i = 0; i < AppState.listaKiosco.size(); i++) {
+        KioscoComboBox1.addItem(AppState.listaKiosco.get(i).getnombre().toString()+". Codigo: "+AppState.listaKiosco.get(i).getcodigo().toString());   
+        }
+        
     }
 
     /**
@@ -61,8 +63,12 @@ public class UsuariosFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         adminRadioButton = new javax.swing.JRadioButton();
-        usuRadioButton = new javax.swing.JRadioButton();
+        kioRadioButton = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
+        KioscoComboBox1 = new javax.swing.JComboBox<>();
+        fotoLabel = new javax.swing.JLabel();
+        FechaChooser = new com.toedter.calendar.JDateChooser();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,7 +187,7 @@ public class UsuariosFrame extends javax.swing.JFrame {
             }
         });
 
-        NacComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NacComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guatemala", "Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama" }));
         NacComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NacComboBoxActionPerformed(evt);
@@ -223,10 +229,10 @@ public class UsuariosFrame extends javax.swing.JFrame {
             }
         });
 
-        usuRadioButton.setText("USUARIO");
-        usuRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        kioRadioButton.setText("KIOSCO");
+        kioRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuRadioButtonActionPerformed(evt);
+                kioRadioButtonActionPerformed(evt);
             }
         });
 
@@ -238,6 +244,8 @@ public class UsuariosFrame extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jLabel14.setText("*SI DECEA CAMBIAR SU CONTRASEÑA SOBRE ESCRIBALA*");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,29 +267,42 @@ public class UsuariosFrame extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(CorreoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(usuRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(adminRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(FechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(112, 112, 112))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(MRadioButton)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(CorreoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(kioRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(adminRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(FRadioButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(OtroRadioButton))
-                                    .addComponent(DpiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(NacComboBox, 0, 212, Short.MAX_VALUE)
-                                    .addComponent(AliasTextField)
-                                    .addComponent(TelefonoTextField))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(MRadioButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(FRadioButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(OtroRadioButton))
+                                            .addComponent(DpiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(NacComboBox, 0, 212, Short.MAX_VALUE)
+                                            .addComponent(AliasTextField)
+                                            .addComponent(TelefonoTextField)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(KioscoComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -294,26 +315,24 @@ public class UsuariosFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ContrasenaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                                     .addComponent(ApellidoTextField))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel13)
-                                .addGap(47, 47, 47)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton1))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(75, 75, 75))))
+                                .addGap(38, 38, 38)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(84, 84, 84))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 451, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(265, 265, 265)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -323,35 +342,41 @@ public class UsuariosFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CorreoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(ApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CorreoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(ApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ContrasenaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -382,11 +407,15 @@ public class UsuariosFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(usuRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kioRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adminRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addGap(36, 36, 36))
+                .addComponent(KioscoComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel14))
+                .addContainerGap())
         );
 
         pack();
@@ -424,10 +453,12 @@ public class UsuariosFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(MRadioButton.isSelected()){
             FRadioButton.setEnabled(false);
-            OtroRadioButton.setEnabled(false);   
+            OtroRadioButton.setEnabled(false); 
+            genero = "Masculino";
         }else{
             FRadioButton.setEnabled(true);
             OtroRadioButton.setEnabled(true);
+            
         }
         
     }//GEN-LAST:event_MRadioButtonActionPerformed
@@ -436,7 +467,8 @@ public class UsuariosFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(FRadioButton.isSelected()){
             MRadioButton.setEnabled(false);
-            OtroRadioButton.setEnabled(false);   
+            OtroRadioButton.setEnabled(false);
+            genero = "Femenino";
         }else{
             MRadioButton.setEnabled(true);
             OtroRadioButton.setEnabled(true);
@@ -447,7 +479,8 @@ public class UsuariosFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(OtroRadioButton.isSelected()){
             FRadioButton.setEnabled(false);
-            MRadioButton.setEnabled(false);   
+            MRadioButton.setEnabled(false);
+            genero = "Otro";
         }else{
             FRadioButton.setEnabled(true);
             MRadioButton.setEnabled(true);
@@ -460,14 +493,24 @@ public class UsuariosFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        JFileChooser archivo = new JFileChooser();
+        int ventana= archivo.showOpenDialog(null);
+        if (ventana == JFileChooser.APPROVE_OPTION){
+            File file= archivo.getSelectedFile();
+            jTextField1.setText(String.valueOf(file));
+            Image foto = getToolkit().getImage(jTextField1.getText());
+            foto = foto.getScaledInstance(fotoLabel.getWidth(), fotoLabel.getHeight(), Image.SCALE_DEFAULT);
+            fotoLabel.setIcon(new ImageIcon(foto));
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void adminRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminRadioButtonActionPerformed
         // TODO add your handling code here:
         if(adminRadioButton.isSelected()){
-        usuRadioButton.setEnabled(false);
+        kioRadioButton.setEnabled(false);
+        rol = "Admin";
         }else{
-        usuRadioButton.setEnabled(true);       
+        kioRadioButton.setEnabled(true);       
         }
     }//GEN-LAST:event_adminRadioButtonActionPerformed
 
@@ -478,21 +521,120 @@ public class UsuariosFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void usuRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuRadioButtonActionPerformed
+    private void kioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kioRadioButtonActionPerformed
         // TODO add your handling code here:
-        if(usuRadioButton.isSelected()){
+        if(kioRadioButton.isSelected()){
         adminRadioButton.setEnabled(false);
+        rol = "Kiosco";
         }else{
         adminRadioButton.setEnabled(true);       
         }
         
-    }//GEN-LAST:event_usuRadioButtonActionPerformed
+    }//GEN-LAST:event_kioRadioButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LoginFrame opframe = new LoginFrame();
-        opframe.setVisible(true);
-        dispose();
+        
+        //----------------------------------------------------------------------------------------
+        
+        if(FechaChooser.getDate() == null ||CorreoTextField.getText().isEmpty() || NombreTextField.getText().isEmpty() || ApellidoTextField.getText().isEmpty() || ContrasenaTextField.getText().isEmpty() ||  DpiTextField.getText().isEmpty() || AliasTextField.getText().isEmpty() || TelefonoTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios"); 
+        }
+        else{
+            String contrasena = ContrasenaTextField.getText();
+            final int MAX=8, MIN_Uppercase=1, MIN_Lowercase=1, NUM_Digits=1, Special=1;
+            int uppercaseCounter=0, lowercaseCounter=0, digitCounter=0, specialCounter=0; 
+            for (int i=0; i < contrasena.length(); i++ ) {
+                char c = contrasena.charAt(i);
+                if(Character.isUpperCase(c)) 
+                    uppercaseCounter++;
+                else if(Character.isLowerCase(c)) 
+                    lowercaseCounter++;
+                else if(Character.isDigit(c)) 
+                    digitCounter++;     
+                if(c>=33&&c<=46||c==64){
+                    specialCounter++;
+                }
+            }
+            if (contrasena.length()>= MAX && uppercaseCounter>= MIN_Uppercase && lowercaseCounter>= MIN_Lowercase && digitCounter>= NUM_Digits && specialCounter>= Special&& contrasena.length()>= MAX){ 
+                boolean existe=false;
+                for (int i=0;i< AppState.listaUsuario.size();i++){
+                    if (CorreoTextField.getText().equals(AppState.listaUsuario.get(i).getcorreo())==true){
+                        existe=true;
+                        break;
+                    }
+                }
+                if(existe){
+                     JOptionPane.showMessageDialog(null, "Este Correo Ya Ha Sido Registrado. Intenta con uno nuevo.", "REGISTRAR USUARIO", JOptionPane.WARNING_MESSAGE);
+                }else if(adminRadioButton.isSelected()){
+                    a = 1;
+                    String correo=CorreoTextField.getText(),nacionalidad = NacComboBox.getSelectedItem().toString(), nombre=NombreTextField.getText(), apellido=ApellidoTextField.getText(), fechaNacimiento=FechaChooser.getDate().toString(), sobrenombre = AliasTextField.getText();
+                    long dpi= Long.parseLong(DpiTextField.getText()), telefono = Long.parseLong(TelefonoTextField.getText());
+                    ImageIcon foto= new ImageIcon(jTextField1.getText());
+                    Usuario nuevoUsuario = new Usuario();
+                    nuevoUsuario.correo=correo;
+                    nuevoUsuario.nombre=nombre;
+                    nuevoUsuario.apellido=apellido;
+                    nuevoUsuario.password=contrasena;
+                    nuevoUsuario.dpi=dpi;
+                    nuevoUsuario.fechaNacimiento=fechaNacimiento;
+                    nuevoUsuario.genero=genero;
+                    nuevoUsuario.nacionalidad=nacionalidad;
+                    nuevoUsuario.sobrenombre=sobrenombre;
+                    nuevoUsuario.telefono=telefono;
+                    nuevoUsuario.rol=rol;
+                    nuevoUsuario.foto=foto;
+                    AppState.listaUsuario.add(nuevoUsuario);
+                    JOptionPane.showMessageDialog(null, "Usuario Registrado Correctamente");
+                    CorreoTextField.setText(null);NombreTextField.setText(null);ApellidoTextField.setText(null);ContrasenaTextField.setText(null); DpiTextField.setText(null); AliasTextField.setText(null); AliasTextField.setText(null);TelefonoTextField.setText(null);FechaChooser.setCalendar(null);
+                    for(int i = 0; i<AppState.listaUsuario.size(); i++){
+                        System.out.println(AppState.listaUsuario.get(i).getcorreo()+" - "+AppState.listaUsuario.get(i).getnombre()+" - "+AppState.listaUsuario.get(i).getapellido()+" - "+AppState.listaUsuario.get(i).getpassword()+" - "+ AppState.listaUsuario.get(i).getDPI()+" - "+AppState.listaUsuario.get(i).getfechaNacimiento()+" - "+AppState.listaUsuario.get(i).getgenero()+" - "+AppState.listaUsuario.get(i).getnacionalidad()+" - "+AppState.listaUsuario.get(i).getsobrenombre()+" - "+AppState.listaUsuario.get(i).gettelefono()+" - "+AppState.listaUsuario.get(i).getrol()+" - "+AppState.listaUsuario.get(i).getfoto()+" - "+AppState.listaUsuario.get(i).getcontadorPaquete());
+                    }
+                    System.out.println("--");
+
+                }else if(kioRadioButton.isSelected()){
+                    a=0;
+                    String correo=CorreoTextField.getText(),nacionalidad = NacComboBox.getSelectedItem().toString(), nombre=NombreTextField.getText(), apellido=ApellidoTextField.getText(), fechaNacimiento=FechaChooser.getDate().toString(), sobrenombre = AliasTextField.getText();
+                    long dpi= Long.parseLong(DpiTextField.getText()), telefono = Long.parseLong(TelefonoTextField.getText());
+                    ImageIcon foto= new ImageIcon(jTextField1.getText());
+                    Usuario nuevoUsuario = new Usuario();
+                    nuevoUsuario.correo=correo;
+                    nuevoUsuario.nombre=nombre;
+                    nuevoUsuario.apellido=apellido;
+                    nuevoUsuario.password=contrasena;
+                    nuevoUsuario.dpi=dpi;
+                    nuevoUsuario.fechaNacimiento=fechaNacimiento;
+                    nuevoUsuario.genero=genero;
+                    nuevoUsuario.nacionalidad=nacionalidad;
+                    nuevoUsuario.sobrenombre=sobrenombre;
+                    nuevoUsuario.telefono=telefono;
+                    nuevoUsuario.rol=rol;
+                    nuevoUsuario.foto=foto;//SE AGREGA EL NUEVO OBJETO AL ARRAYLIST
+                    AppState.listaUsuario.add(nuevoUsuario);
+                    JOptionPane.showMessageDialog(null, "Usuario Registrado Correctamente");
+                    CorreoTextField.setText(null);NombreTextField.setText(null);ApellidoTextField.setText(null);ContrasenaTextField.setText(null); DpiTextField.setText(null); AliasTextField.setText(null); AliasTextField.setText(null);TelefonoTextField.setText(null);FechaChooser.setCalendar(null);
+                    for(int i = 0; i<AppState.listaUsuario.size(); i++){
+                        System.out.println(AppState.listaUsuario.get(i).getcorreo()+" - "+AppState.listaUsuario.get(i).getnombre()+" - "+AppState.listaUsuario.get(i).getapellido()+" - "+AppState.listaUsuario.get(i).getpassword()+" - "+ AppState.listaUsuario.get(i).getDPI()+" - "+AppState.listaUsuario.get(i).getfechaNacimiento()+" - "+AppState.listaUsuario.get(i).getgenero()+" - "+AppState.listaUsuario.get(i).getnacionalidad()+" - "+AppState.listaUsuario.get(i).getsobrenombre()+" - "+AppState.listaUsuario.get(i).gettelefono()+" - "+AppState.listaUsuario.get(i).getrol()+" - "+AppState.listaUsuario.get(i).getfoto());
+                    }
+                    System.out.println("--------------------------------------------------------------------");
+                }   
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "La Contraseña debe contener letras mayusculas, minusculas, números y caracteres especiales.");
+            }
+            
+            if (a==0){
+                UsuarioMenuJFRAME Muframe = new UsuarioMenuJFRAME();
+                Muframe.setVisible(true);
+                dispose();
+                
+            }else if(a==1){
+                AdminFrame adf = new AdminFrame();
+                adf.setVisible(true);
+                dispose();
+            }
+        } 
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -545,12 +687,15 @@ public class UsuariosFrame extends javax.swing.JFrame {
     private javax.swing.JTextField CorreoTextField;
     private javax.swing.JTextField DpiTextField;
     private javax.swing.JRadioButton FRadioButton;
+    private com.toedter.calendar.JDateChooser FechaChooser;
+    private javax.swing.JComboBox<String> KioscoComboBox1;
     private javax.swing.JRadioButton MRadioButton;
     private javax.swing.JComboBox<String> NacComboBox;
     private javax.swing.JTextField NombreTextField;
     private javax.swing.JRadioButton OtroRadioButton;
     private javax.swing.JTextField TelefonoTextField;
     public javax.swing.JRadioButton adminRadioButton;
+    private javax.swing.JLabel fotoLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -560,6 +705,7 @@ public class UsuariosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -569,6 +715,6 @@ public class UsuariosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JRadioButton usuRadioButton;
+    private javax.swing.JRadioButton kioRadioButton;
     // End of variables declaration//GEN-END:variables
 }

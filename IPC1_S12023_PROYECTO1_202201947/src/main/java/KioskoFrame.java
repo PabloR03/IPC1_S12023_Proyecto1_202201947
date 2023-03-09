@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -68,6 +70,11 @@ public class KioskoFrame extends javax.swing.JFrame {
 
         jTextField1.setText("KIOSKO-2003");
         jTextField1.setEnabled(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         NomKioscoTextField.setText("ingrese nombre del kiosko");
 
@@ -192,7 +199,50 @@ public class KioskoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+if(jTextField1.getText().isEmpty() || NomKioscoTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campos Vacíos, Debe Llenar todos los campos.", "MANEJO DE KIOSCO", JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            boolean existe=false;
+            for (int i=0;i<AppState.listaKiosco.size();i++){
+                if (jTextField1.getText().equals(AppState.listaKiosco.get(i).getcodigo())==true){
+                    existe=true;
+                    break;
+                }
+            }
+            if(existe){
+                jTextField1.setText(null);
+                JOptionPane.showMessageDialog(null, "Éste Código Ya Ha Sido Registrado. Intenta con uno nuevo.", "MANEJO DE KIOSCO", JOptionPane.WARNING_MESSAGE);
+                int aleatorio=0; 
+                Random codigoKioscoRandom = new Random();
+                aleatorio=(int)(codigoKioscoRandom.nextDouble()*1000);
+                String codigo="KIOS-"+aleatorio;
+                jTextField1.setText(codigo);
+                
+                }else{
+                String codigoKiosco=jTextField1.getText(), nombre=NomKioscoTextField.getText(), codigoRegion=RegionesComboBox.getSelectedItem().toString();
+                Kiosco nuevoKiosco = new Kiosco();
+                nuevoKiosco.codigo=codigoKiosco;
+                nuevoKiosco.nombre=nombre;
+                nuevoKiosco.region=codigoRegion;
 
+                    //SE AGREGA EL NUEVO OBJETO AL ARRAYLIST
+                AppState.listaKiosco.add(nuevoKiosco);
+                JOptionPane.showMessageDialog(null, "Kiosco Registrado Correctamente");
+                jTextField1.setText(null);NomKioscoTextField.setText(null);
+                
+                int aleatorio=0;             
+                Random codigoKioscoRandom = new Random();
+                aleatorio=(int)(codigoKioscoRandom.nextDouble()*100);
+                aleatorio=(int)(codigoKioscoRandom.nextDouble()*100);
+                String codigo="KIOS-"+aleatorio;
+                jTextField1.setText(codigo);
+                }
+ 
+                
+                for(int i = 0; i<AppState.listaKiosco.size(); i++){
+                    System.out.println(AppState.listaKiosco.get(i).getcodigo()+" - "+AppState.listaKiosco.get(i).getnombre()+" - "+AppState.listaKiosco.get(i).getregion());
+                }
         RegionesComboBox.setEnabled(false);
         NomKioscoTextField.setEnabled(false);
         //guardar los valores en una lista
@@ -200,11 +250,17 @@ public class KioskoFrame extends javax.swing.JFrame {
         AdminFrame opframe = new AdminFrame();
         opframe.setVisible(true);
         dispose();
+}
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentRemoved
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentRemoved
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
