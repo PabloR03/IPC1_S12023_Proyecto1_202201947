@@ -68,7 +68,6 @@ public class UsuariosFrame extends javax.swing.JFrame {
         KioscoComboBox1 = new javax.swing.JComboBox<>();
         fotoLabel = new javax.swing.JLabel();
         FechaChooser = new com.toedter.calendar.JDateChooser();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,8 +244,6 @@ public class UsuariosFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setText("*SI DECEA CAMBIAR SU CONTRASEÑA SOBRE ESCRIBALA*");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -330,9 +327,7 @@ public class UsuariosFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(265, 265, 265)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                .addGap(27, 27, 27))
+                .addGap(27, 424, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -412,9 +407,7 @@ public class UsuariosFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KioscoComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel14))
+                .addComponent(jButton4)
                 .addContainerGap())
         );
 
@@ -508,9 +501,12 @@ public class UsuariosFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(adminRadioButton.isSelected()){
         kioRadioButton.setEnabled(false);
+        KioscoComboBox1.setEnabled(false);
+        
         rol = "Admin";
         }else{
-        kioRadioButton.setEnabled(true);       
+        kioRadioButton.setEnabled(true);
+        KioscoComboBox1.setEnabled(true);
         }
     }//GEN-LAST:event_adminRadioButtonActionPerformed
 
@@ -705,7 +701,6 @@ public class UsuariosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

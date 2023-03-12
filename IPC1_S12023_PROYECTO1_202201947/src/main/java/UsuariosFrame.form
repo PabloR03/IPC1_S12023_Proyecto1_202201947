@@ -125,9 +125,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
               <Component id="jButton4" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-              <Component id="jLabel14" pref="317" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="27" pref="424" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -228,10 +226,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="KioscoComboBox1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jButton4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -548,11 +543,6 @@
     <Component class="javax.swing.JLabel" name="fotoLabel">
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="FechaChooser">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="*SI DECEA CAMBIAR SU CONTRASE&#xd1;A SOBRE ESCRIBALA*"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

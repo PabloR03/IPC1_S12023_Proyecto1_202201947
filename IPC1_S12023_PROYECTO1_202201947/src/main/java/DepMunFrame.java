@@ -3,10 +3,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 
 /**
  *
@@ -18,7 +15,7 @@ public class DepMunFrame extends javax.swing.JFrame {
     /**
      * Creates new form DepMunFrame
      */
-    
+    public static String mun;
     public DepMunFrame() {
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -48,6 +45,9 @@ public class DepMunFrame extends javax.swing.JFrame {
         regionTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         munTextField = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +121,20 @@ public class DepMunFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("MODIFICAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,9 +146,6 @@ public class DepMunFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 30, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(RegionLabel2)
@@ -148,12 +159,19 @@ public class DepMunFrame extends javax.swing.JFrame {
                                 .addComponent(RegionLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(regionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(155, 211, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(DepComboBox, 0, 182, Short.MAX_VALUE)
                                     .addComponent(munTextField))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addGap(52, 52, 52)
+                                .addComponent(jTextField1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
@@ -175,7 +193,10 @@ public class DepMunFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegionLabel1)
-                    .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DepComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegionLabel2)
@@ -249,6 +270,7 @@ public class DepMunFrame extends javax.swing.JFrame {
         munTextField.setEnabled(false);
         
         
+        
                 
         
         AdminFrame opframe = new AdminFrame();
@@ -264,9 +286,48 @@ public class DepMunFrame extends javax.swing.JFrame {
         munTextField.setEnabled(true);
     }//GEN-LAST:event_ccrButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String Dep = (String)CodRegComboBox.getSelectedItem();
+        String depn;
+        DepComboBox.removeItem(Dep);
+        depn=jTextField1.getText();
+        DepComboBox.insertItemAt(depn, 1);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void munTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_munTextFieldActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String Dep = (String)CodRegComboBox.getSelectedItem();
+        DepComboBox.removeItem(Dep);
+        if(Dep.equals("GUATEMALA")){          
+            DepComboBox.removeItem("GUATEMALA");
+        }else if(Dep.equals("PETEN")){
+            DepComboBox.removeItem("PETEN");
+        }else if(Dep.equals("ALTA VERAPAZ")){
+            DepComboBox.removeItem("ALTA VERAPAZ");
+        }else if(Dep.equals("ZACAPA")){
+            DepComboBox.removeItem("ZACAPA");
+        }else if(Dep.equals("IZABAL")){
+            DepComboBox.removeItem("IZABAL");
+        }else if(Dep.equals("JALAPA")){
+            DepComboBox.removeItem("JALAPA");
+        }else if(Dep.equals("JUTIAPA")){
+            DepComboBox.removeItem("JUTIAPA");
+        }else if(Dep.equals("SUCHITEPEQUEZ")){
+            DepComboBox.removeItem("SUCHITEPEQUEZ");
+        }else if(Dep.equals("QUETZALTENANGO")){
+            DepComboBox.removeItem("QUETZALTENANGO");
+        }else if(Dep.equals("HUEHUETENANGO")){
+            DepComboBox.removeItem("HUEHUETENANGO");
+        }else if(Dep.equals("QUICHE")){
+            DepComboBox.removeItem("QUICHE");
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,7 +374,10 @@ public class DepMunFrame extends javax.swing.JFrame {
     private javax.swing.JButton ccrButton1;
     private javax.swing.JButton gcrButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField munTextField;
     private javax.swing.JTextField regionTextField;
     // End of variables declaration//GEN-END:variables

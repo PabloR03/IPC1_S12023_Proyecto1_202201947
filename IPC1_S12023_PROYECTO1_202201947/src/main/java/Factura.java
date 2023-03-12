@@ -1,12 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author Pablo Rodriguez
  */
 class Factura {
+     public String correo;
+    public String nombreCompleto;
+    public String direccion;
+    public String nit;
     
+    public String getcorreo() {
+        return correo;
+    }
+    public String getnombreCompleto() {
+        return nombreCompleto;
+    }
+    public String getdireccion() {
+        return direccion;
+    }
+    public String getnit() {
+        return nit;
+    }  
+
 }

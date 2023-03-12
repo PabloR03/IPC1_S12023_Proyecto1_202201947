@@ -1,10 +1,8 @@
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
  *
@@ -15,6 +13,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     /**
      * Creates new form COTPAGOUSUARIOFrame
      */
+    public static String Region, contadorpaqrep, contadortotalesrep, usuar;
+    public static int contpaq, contadorpaq;
+    public static double contadort,contadortotales;
+    ReportesFrame repo = new ReportesFrame();
+    
     public static String censurarNumero(String tarjeta) {
     int longitud = tarjeta.length();
     if (longitud <= 4) {
@@ -93,6 +96,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         pagarButton = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel23 = new javax.swing.JLabel();
+        usuTextField = new javax.swing.JTextField();
         pagoPane = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         efeRadioButton = new javax.swing.JRadioButton();
@@ -131,7 +136,6 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -175,6 +179,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("NUMERO DE PAQUETES");
+
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -258,18 +268,6 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(cotizarPaneLayout.createSequentialGroup()
-                                .addGap(179, 179, 179)
-                                .addComponent(jLabel11)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(cotizarPaneLayout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1))
-                            .addGroup(cotizarPaneLayout.createSequentialGroup()
                                 .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(cotizarPaneLayout.createSequentialGroup()
@@ -280,7 +278,15 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2))))
+                                .addComponent(jTextField2))
+                            .addGroup(cotizarPaneLayout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(cotizarPaneLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel12)
@@ -309,11 +315,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(239, 239, 239))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(60, 60, 60))))
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(219, 219, 219))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,14 +331,17 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                         .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
                         .addComponent(jButton9)
-                        .addGap(171, 171, 171))))
+                        .addGap(179, 179, 179))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cotizarPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(217, 217, 217))))
         );
         cotizarPaneLayout.setVerticalGroup(
             cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cotizarPaneLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,9 +349,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cotizarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,7 +381,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         Jpane.addTab("COTIZAR", cotizarPane);
@@ -401,7 +410,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("DATOS DE TARJETA DE CREDITO O DÉBITO");
+        jLabel5.setText("DATOS DE TARJETA DE CREDITO O DÉBITO (puede guardar mas de 1)");
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -428,7 +437,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CVV:");
 
-        cvTextField.setText("3 DIGITOS DE LA PARTE POSTERIOR DE SU TARJETA");
+        cvTextField.setText("xxx - no se almacena solo para verificar la tarjeta");
         cvTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cvTextFieldActionPerformed(evt);
@@ -455,52 +464,76 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel23.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("USUARIO");
+
+        usuTextField.setEnabled(false);
+        usuTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout datosPaneLayout = new javax.swing.GroupLayout(datosPane);
         datosPane.setLayout(datosPaneLayout);
         datosPaneLayout.setHorizontalGroup(
             datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datosPaneLayout.createSequentialGroup()
-                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(datosPaneLayout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel5))
-                    .addGroup(datosPaneLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(datosPaneLayout.createSequentialGroup()
-                                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ncTextField)
-                                    .addComponent(dTextField)
-                                    .addComponent(nitTextField)
-                                    .addComponent(noTextField)
-                                    .addComponent(nuTextField)
-                                    .addComponent(cvTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(30, 30, 30)
+                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(datosPaneLayout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addComponent(jLabel5))
+                        .addGroup(datosPaneLayout.createSequentialGroup()
+                            .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(18, 18, 18)
+                            .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(ncTextField)
+                                .addComponent(dTextField)
+                                .addComponent(nitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)
+                            .addGap(176, 176, 176)))
+                    .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(datosPaneLayout.createSequentialGroup()
+                            .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(18, 18, 18)
+                            .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(noTextField)
+                                .addComponent(nuTextField)
+                                .addComponent(cvTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(159, 159, 159)))
+                    .addComponent(pagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosPaneLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(203, 203, 203))))
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addComponent(usuTextField)
+                .addContainerGap())
         );
         datosPaneLayout.setVerticalGroup(
             datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datosPaneLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(usuTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(ncTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -516,7 +549,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(datosPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(noTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -534,7 +567,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
                     .addComponent(cvTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addComponent(pagarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -542,7 +575,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         Jpane.addTab("DATOS PAGO", datosPane);
 
         jLabel14.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("TIPO DE PAGO:");
 
         efeRadioButton.setText("CONTRAENTREGA");
@@ -560,15 +593,15 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         });
 
         jLabel15.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("NOMBRE:");
 
         jLabel16.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("NIT");
 
         jLabel17.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("DIRECCION");
 
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -584,11 +617,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         });
 
         jLabel18.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("TOTAL A PAGAR:");
 
         jLabel19.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("TOTAL");
 
         jButton6.setBackground(new java.awt.Color(102, 204, 255));
@@ -611,7 +644,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         jTextField15.setEnabled(false);
 
         jLabel20.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("INGRESE CVV:");
 
         desfButton.setBackground(new java.awt.Color(102, 204, 255));
@@ -624,6 +657,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         desgButton.setForeground(new java.awt.Color(0, 0, 0));
         desgButton.setText("DESCARGAR GUIA");
 
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("EL PAGO CONTRA ENTREGA HACE UN RECARGO DE Q5.00");
 
         javax.swing.GroupLayout pagoPaneLayout = new javax.swing.GroupLayout(pagoPane);
@@ -852,6 +886,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
+        Region = jTextField8.getText();
+        System.out.println(Region);
+        repo.jComboBox2.addItem(Region);
+        
+        
         jTextField1.setEnabled(false);
         jComboBox2.setEnabled(false);
         jTextField8.setEnabled(false);
@@ -920,17 +959,29 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        
+        
+        contadort = Double.parseDouble(jTextField11.getText());
+        System.out.println(contadort);
+        contadortotales = contadortotales + contadort;
+        System.out.println(contadortotales);
+        contadortotalesrep = Double.toString(contadortotales);
+        System.out.println(contadortotalesrep);
+        
+        
+        
+        
+        String usuarios;
+        LoginFrame a = new LoginFrame();
+        usuarios = a.asd;
+        usuTextField.setText(usuarios);
         datosPane.setEnabled(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void pagarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarButtonActionPerformed
         // TODO add your handling code here:
-        String nombre = ncTextField.getText();
-        jTextField12.setText(nombre);
-        String direccion = dTextField.getText();
-        jTextField13.setText(direccion);
-        String nit = nitTextField.getText();
-        jTextField14.setText(nit);
+        
+        JOptionPane.showMessageDialog(null, "Procedera al pago");
         
         pagoPane.setEnabled(true);
         desfButton.setVisible(false);
@@ -939,6 +990,38 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        usuar = usuTextField.getText();
+        if(ncTextField.getText().isEmpty()||dTextField.getText().isEmpty()||nitTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Llenar todos los campos");  
+        }else{
+            boolean existe=false;
+            for (int i=0;i<AppState.listaDatosFacturacion.size();i++){
+                if (usuTextField.getText().equals(AppState.listaDatosFacturacion.get(i).getcorreo())==true&& dTextField.getText().equals(AppState.listaDatosFacturacion.get(i).getdireccion())){
+                    existe=true;
+                    break;
+                }
+            }
+            if(existe){
+                JOptionPane.showMessageDialog(null, "Direccion ya registrada");
+            }else{
+                
+                String nombreCompleto=ncTextField.getText();
+                String direccion=dTextField.getText();
+                String nit=nitTextField.getText();
+                jTextField12.setText(nombreCompleto);
+                jTextField13.setText(direccion);
+                jTextField14.setText(nit);
+                
+                JOptionPane.showMessageDialog(null, "Datos Guardados");
+                ncTextField.setText(null);
+                dTextField.setText(null);
+                nitTextField.setText(null);
+                for(int i = 0; i<AppState.listaDatosFacturacion.size(); i++){
+                    System.out.println(AppState.listaDatosFacturacion.get(i).getcorreo()+" - "+AppState.listaDatosFacturacion.get(i).getnombreCompleto()+" - "+AppState.listaDatosFacturacion.get(i).getdireccion()+" - "+AppState.listaDatosFacturacion.get(i).getnit());
+                }
+            }
+        }
+        
         String nombre = ncTextField.getText();
         String direc = dTextField.getText();
         String nit = nitTextField.getText();
@@ -954,11 +1037,45 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
         String tarjeta = nuTextField.getText();
         String numeroCensurado = censurarNumero(tarjeta);
         System.out.println(numeroCensurado);
         jComboBox7.addItem(numeroCensurado);
+        
+        if(jDateChooser1.getDate() == null||noTextField.getText().isEmpty()||nuTextField.getText().isEmpty()){
+             JOptionPane.showMessageDialog(null, "Llenar todos los campos");  
+        }
+        else{
+            boolean existe=false;
+            for (int i=0;i<AppState.listaTarjeta.size();i++){
+                if (usuTextField.getText().equals(AppState.listaTarjeta.get(i).getcorreo())==true&&noTextField.getText().equals(String.valueOf(AppState.listaTarjeta.get(i).getnumero()))){
+                    existe=true;
+                    break;
+                }
+            }
+            if(existe){
+                JOptionPane.showMessageDialog(null, "Tarjeta Repetida en este usuario,ingresa nueva tarjeta.");
+            }else{
+                String correo=usuTextField.getText();
+                String nombre=noTextField.getText();
+                long numero=Long.parseLong(nuTextField.getText());
+                String fecha=jDateChooser1.getDate().toString();
+                Tarjeta nuevaTarjeta = new Tarjeta();
+                nuevaTarjeta.correo=correo;
+                nuevaTarjeta.nombre=nombre;
+                nuevaTarjeta.numero=numero;
+                nuevaTarjeta.fecha=fecha;
+                AppState.listaTarjeta.add(nuevaTarjeta);
+                JOptionPane.showMessageDialog(null, "Tarjeta Registrada");
+                noTextField.setText(null);
+                nuTextField.setText(null);
+                jDateChooser1.setCalendar(null);
+                for(int i = 0; i<AppState.listaTarjeta.size(); i++){
+                    System.out.println(AppState.listaTarjeta.get(i).getcorreo()+" - "+AppState.listaTarjeta.get(i).getnombre()+" - "+AppState.listaTarjeta.get(i).getnumero()+" - "+AppState.listaTarjeta.get(i).getfecha());
+                }
+            }
+        }
+        
         
 
         
@@ -972,6 +1089,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             
         }else{
             tarRadioButton.setEnabled(true);
+            
         }
     }//GEN-LAST:event_efeRadioButtonActionPerformed
 
@@ -983,6 +1101,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             jComboBox7.setEnabled(true);
         }else{
             efeRadioButton.setEnabled(true);
+            jTextField15.setEnabled(false);
+            jComboBox7.setEnabled(false);
         }
     }//GEN-LAST:event_tarRadioButtonActionPerformed
 
@@ -1115,6 +1235,39 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         double s=0, m=5, xl=10;
+        contpaq = Integer.parseInt(jTextField10.getText());
+        contadorpaq = contadorpaq + contpaq;
+        contadorpaqrep = Integer.toString(contadorpaq);
+        
+       /*
+        contadort = Integer.parseInt(jTextField11.getText());
+        contadortotales = contadortotales + contadort;
+        contadortotalesrep = Integer.toString(contadortotales);
+        */
+        
+        ReportesFrame repo = new ReportesFrame();
+        repo.regions = Region;
+        System.out.println(Region);
+
+        
+        System.out.println(repo.regions);
+        System.out.println(contadorpaq);
+        repo.regionsCombobox1.setVisible(true);
+        repo.regionsCombobox1.addItem(repo.regions +" con "+ contadorpaq + " envios");
+        
+        /*
+        contadort = Integer.parseInt(jTextField11.getText());
+        contadortotales = contadortotales + contadort;
+        contadortotalesrep = Integer.toString(contadortotales);
+        System.out.println(contadortotales);
+        repo.jTextField2.setVisible(true);
+        repo.jTextField2.setText("Q"+ contadorpaq + ".00");
+        */
+        jTextField1.setText(contadorpaqrep);
+        
+        
+        //
+        
         
         String can = jTextField10.getText();
         Double cantidad = Double.parseDouble(can);
@@ -1124,6 +1277,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             total = (s * cantidad)+ precesnume;
             String to = Double.toString(total);
             jTextField11.setText(to);
+            
+            
             
         }else if(mRadioButton.isSelected()){
             total = (m * cantidad)+ precesnume;
@@ -1157,6 +1312,14 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         }
         
         
+            /*contadort = Integer.parseInt(jTextField11.getText());
+            System.out.println(contadort);
+            contadortotales = contadortotales + contadort;
+            System.out.println(contadortotales);
+            contadortotalesrep = Integer.toString(contadortotales);
+            System.out.println(contadortotalesrep);
+        */
+        
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -1182,6 +1345,15 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void noTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_noTextFieldActionPerformed
+
+    private void usuTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuTextFieldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_usuTextFieldActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1258,6 +1430,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1285,6 +1458,11 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pagoPane;
     private javax.swing.JRadioButton sRadioButton;
     private javax.swing.JRadioButton tarRadioButton;
+    private javax.swing.JTextField usuTextField;
     private javax.swing.JRadioButton xlRadioButton;
     // End of variables declaration//GEN-END:variables
+
+    private void JOptionPane(Object object, String procedera_a_pagar) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

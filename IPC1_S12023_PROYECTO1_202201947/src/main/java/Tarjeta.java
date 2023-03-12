@@ -1,12 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *
  * @author Pablo Rodriguez
  */
 class Tarjeta {
+    public String correo;
+    public String nombre;
+    public long numero;
+    public String fecha;;
     
+    public String getcorreo() {
+        return correo;
+    }
+    public String getnombre() {
+        return nombre;
+    }   
+    public long getnumero() {
+        return numero;
+    }
+    public String getfecha() {
+        return fecha;
+    }
 }
