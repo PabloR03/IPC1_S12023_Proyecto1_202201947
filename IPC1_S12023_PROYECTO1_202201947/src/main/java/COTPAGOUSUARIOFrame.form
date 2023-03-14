@@ -1094,6 +1094,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="DESCARGAR FACTURA"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desfButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="desgButton">
               <Properties>
@@ -1108,6 +1111,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="DESCARGAR GUIA"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desgButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel22">
               <Properties>

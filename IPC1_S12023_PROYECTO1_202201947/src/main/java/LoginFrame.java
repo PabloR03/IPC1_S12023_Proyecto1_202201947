@@ -11,7 +11,10 @@ import javax.swing.JOptionPane;
  *
  * @author Pablo Rodriguez
  */
+
 public class LoginFrame extends javax.swing.JFrame {
+    static long contras;
+    static String contrass;
     static UsuariosFrame usu = new UsuariosFrame();
      static String asd;
     public LoginFrame() {
@@ -22,7 +25,7 @@ public class LoginFrame extends javax.swing.JFrame {
         setTitle("LOGIN");
         UsuariosFrame usu = new UsuariosFrame();
         
-
+        
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,17 +155,21 @@ public class LoginFrame extends javax.swing.JFrame {
         
         asd = nombreTextField.getText();
         
-        
+        PerfilUsuarioJFRAME pu = new PerfilUsuarioJFRAME();
+        //contrass = pu.jTextField2.getText();
+        System.out.println(contrass);
+        //contras = Long.parseLong(contrass);*/
         if(nombreTextField.getText().isEmpty()||contrasenaTextField.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Campos Vacíos, Debe llenar todos los campos."); 
+            contrass = "202201947";
         }   
-        else if(usuario.equals("pablo") && contra.equals("123")){      
+        else if(usuario.equals("ipc1_202201947@ipc1delivery.com") && contra.equals(contrass)){      
             AdminFrame mena = new AdminFrame();
             
             mena.setVisible(true);
             dispose();
             JOptionPane.showMessageDialog(null, "Bievenido Administrador");
-        }else if(!usuario.equals("pablo") && !contra.equals("123")){
+        }else if(!usuario.equals("pablo") && !contra.equals(contrass)){
           
             boolean existe=false;
             for (int i=0;i<AppState.listaUsuario.size();i++){

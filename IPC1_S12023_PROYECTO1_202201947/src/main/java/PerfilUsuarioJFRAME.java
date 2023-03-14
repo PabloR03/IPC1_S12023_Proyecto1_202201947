@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,13 +16,37 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
 
     /**
      * Creates new form PerfilUsuarioJFRAME
-     */
+     */ String correo, nombre, apellido, sobrenombre,nacionalidad, fecha, dpi,telefono,genero,rol,ruta;
+
     public PerfilUsuarioJFRAME() {
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("LOGIN");
+        
+        correo = coLabel.getText();
+        for (int i = 0; i <AppState.listaUsuario.size(); i++) {
+            if(correo.equals(AppState.listaUsuario.get(i).getcorreo())==true){
+                nombre=AppState.listaUsuario.get(i).getnombre();
+                apellido=AppState.listaUsuario.get(i).getapellido();
+                sobrenombre=AppState.listaUsuario.get(i).getsobrenombre();
+                nacionalidad=AppState.listaUsuario.get(i).getnacionalidad();
+                fecha=AppState.listaUsuario.get(i).getfechaNacimiento();
+                dpi=String.valueOf(AppState.listaUsuario.get(i).getDPI());
+                telefono=String.valueOf(AppState.listaUsuario.get(i).gettelefono());
+                genero=AppState.listaUsuario.get(i).getgenero();
+            }
+        }
+        nomLabel.setText(nombre);
+        apLabel.setText(apellido);
+        sobLabel.setText(sobrenombre);
+        nacLabel.setText(nacionalidad);
+        fnLabel.setText(fecha);
+        dpiLabel.setText(dpi);
+        telLabel.setText(telefono);
+        geLabel.setText(genero);
+        
     }
 
     /**
@@ -42,7 +68,6 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         fnLabel = new javax.swing.JLabel();
         geLabel = new javax.swing.JLabel();
         sobLabel = new javax.swing.JLabel();
@@ -53,6 +78,12 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
         apLabel = new javax.swing.JLabel();
         conLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        fotoLabelp = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        dpiLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,48 +125,41 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("TELEFONO:");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         fnLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         fnLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fnLabel.setText("FECHA NACIMIENTO:");
+        fnLabel.setText("29/08/2003");
 
         geLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         geLabel.setForeground(new java.awt.Color(255, 255, 255));
-        geLabel.setText("GÉNERO:");
+        geLabel.setText("MASCULINO");
 
         sobLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         sobLabel.setForeground(new java.awt.Color(255, 255, 255));
-        sobLabel.setText("SOBRENOMBRE:");
+        sobLabel.setText("PABRO03");
 
         nacLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         nacLabel.setForeground(new java.awt.Color(255, 255, 255));
-        nacLabel.setText("NACIONALIDAD:");
+        nacLabel.setText("GUATEMALTECO");
 
         telLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         telLabel.setForeground(new java.awt.Color(255, 255, 255));
-        telLabel.setText("TELEFONO:");
+        telLabel.setText("51120845");
 
         coLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         coLabel.setForeground(new java.awt.Color(255, 255, 255));
-        coLabel.setText("CORREO:");
+        coLabel.setText("ipc1_202201947@ipc1delivery.com");
 
         nomLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         nomLabel.setForeground(new java.awt.Color(255, 255, 255));
-        nomLabel.setText("NOMBRE:");
+        nomLabel.setText("PABLO ANDRES");
 
         apLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         apLabel.setForeground(new java.awt.Color(255, 255, 255));
-        apLabel.setText("APELLIDO:");
+        apLabel.setText("RODRIGUEZ LIMA");
 
         conLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         conLabel.setForeground(new java.awt.Color(255, 255, 255));
-        conLabel.setText("CONTRASEÑA:");
+        conLabel.setText("202201947");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 102));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -146,16 +170,39 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.setText("202201947");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("CAMBIAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("CARGAR FOTO");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("DPI:");
+
+        dpiLabel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        dpiLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dpiLabel.setText("51120845");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -169,7 +216,8 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel10)
                                         .addComponent(jLabel9)
-                                        .addComponent(jLabel11))
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel12))
                                     .addGap(2, 2, 2))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(65, 65, 65)
@@ -182,18 +230,32 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomLabel)
-                            .addComponent(coLabel)
                             .addComponent(apLabel)
-                            .addComponent(conLabel)
                             .addComponent(fnLabel)
                             .addComponent(geLabel)
-                            .addComponent(nacLabel)
-                            .addComponent(sobLabel)
-                            .addComponent(telLabel)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(coLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(conLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton3)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dpiLabel)
+                                        .addComponent(nacLabel)
+                                        .addComponent(sobLabel)
+                                        .addComponent(telLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                                    .addComponent(fotoLabelp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)))
-                .addGap(0, 102, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +277,9 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(conLabel))
+                    .addComponent(conLabel)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -225,20 +289,27 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(geLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(nacLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(sobLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(telLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(nacLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(sobLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(telLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(dpiLabel)))
+                    .addComponent(fotoLabelp, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(7, 7, 7))
         );
@@ -246,16 +317,31 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         UsuarioMenuJFRAME Muframe = new UsuarioMenuJFRAME();
         Muframe.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        LoginFrame asd = new LoginFrame();
+        
+        conLabel.setText(jTextField2.getText());
+        asd.contrass = conLabel.getText();
+        System.out.println(asd.contrass);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        UsuariosFrame foto = new UsuariosFrame();
+        fotoLabelp = foto.fotoLabel;
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,15 +379,20 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apLabel;
-    private javax.swing.JLabel coLabel;
-    private javax.swing.JLabel conLabel;
-    private javax.swing.JLabel fnLabel;
-    private javax.swing.JLabel geLabel;
+    public javax.swing.JLabel apLabel;
+    public javax.swing.JLabel coLabel;
+    public javax.swing.JLabel conLabel;
+    public javax.swing.JLabel dpiLabel;
+    public javax.swing.JLabel fnLabel;
+    public javax.swing.JLabel fotoLabelp;
+    public javax.swing.JLabel geLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -309,10 +400,10 @@ public class PerfilUsuarioJFRAME extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel nacLabel;
-    private javax.swing.JLabel nomLabel;
-    private javax.swing.JLabel sobLabel;
-    private javax.swing.JLabel telLabel;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JLabel nacLabel;
+    public javax.swing.JLabel nomLabel;
+    public javax.swing.JLabel sobLabel;
+    public javax.swing.JLabel telLabel;
     // End of variables declaration//GEN-END:variables
 }

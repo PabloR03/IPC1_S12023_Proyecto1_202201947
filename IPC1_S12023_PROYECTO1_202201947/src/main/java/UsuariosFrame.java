@@ -494,6 +494,8 @@ public class UsuariosFrame extends javax.swing.JFrame {
             Image foto = getToolkit().getImage(jTextField1.getText());
             foto = foto.getScaledInstance(fotoLabel.getWidth(), fotoLabel.getHeight(), Image.SCALE_DEFAULT);
             fotoLabel.setIcon(new ImageIcon(foto));
+            
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -530,7 +532,8 @@ public class UsuariosFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+        PerfilUsuarioJFRAME pus = new PerfilUsuarioJFRAME();
+        pus.fotoLabelp = fotoLabel;
         //----------------------------------------------------------------------------------------
         
         if(FechaChooser.getDate() == null ||CorreoTextField.getText().isEmpty() || NombreTextField.getText().isEmpty() || ApellidoTextField.getText().isEmpty() || ContrasenaTextField.getText().isEmpty() ||  DpiTextField.getText().isEmpty() || AliasTextField.getText().isEmpty() || TelefonoTextField.getText().isEmpty()){
@@ -691,7 +694,7 @@ public class UsuariosFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton OtroRadioButton;
     private javax.swing.JTextField TelefonoTextField;
     public javax.swing.JRadioButton adminRadioButton;
-    private javax.swing.JLabel fotoLabel;
+    public javax.swing.JLabel fotoLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

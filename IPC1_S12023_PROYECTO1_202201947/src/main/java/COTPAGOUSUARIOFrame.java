@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -13,6 +16,8 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     /**
      * Creates new form COTPAGOUSUARIOFrame
      */
+    String tamano, tipoPago;
+    
     public static String Region, contadorpaqrep, contadortotalesrep, usuar;
     public static int contpaq, contadorpaq;
     public static double contadort,contadortotales;
@@ -651,11 +656,21 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         desfButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         desfButton.setForeground(new java.awt.Color(0, 0, 0));
         desfButton.setText("DESCARGAR FACTURA");
+        desfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desfButtonActionPerformed(evt);
+            }
+        });
 
         desgButton.setBackground(new java.awt.Color(102, 204, 255));
         desgButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         desgButton.setForeground(new java.awt.Color(0, 0, 0));
         desgButton.setText("DESCARGAR GUIA");
+        desgButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desgButtonActionPerformed(evt);
+            }
+        });
 
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("EL PAGO CONTRA ENTREGA HACE UN RECARGO DE Q5.00");
@@ -821,7 +836,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void sRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sRadioButtonActionPerformed
         // TODO add your handling code here:
+        
         if(sRadioButton.isSelected()){
+            tamano="pequeño";
         mRadioButton.setEnabled(false);
         xlRadioButton.setEnabled(false);
         eRadioButton.setEnabled(true);
@@ -837,7 +854,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void mRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mRadioButtonActionPerformed
         // TODO add your handling code here:
+        
         if(mRadioButton.isSelected()){
+            tamano="mediano";
         sRadioButton.setEnabled(false);
         xlRadioButton.setEnabled(false);
         eRadioButton.setEnabled(true);
@@ -852,7 +871,9 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void xlRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xlRadioButtonActionPerformed
         // TODO add your handling code here:
+        
         if(xlRadioButton.isSelected()){
+            tamano="grande";
         sRadioButton.setEnabled(false);
         mRadioButton.setEnabled(false);
         eRadioButton.setEnabled(true);
@@ -1084,6 +1105,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void efeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efeRadioButtonActionPerformed
         // TODO add your handling code here:
         if(efeRadioButton.isSelected()){
+            tipoPago="efectivo";
             tarRadioButton.setEnabled(false);
             jLabel22.setVisible(true);
             
@@ -1096,6 +1118,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void tarRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarRadioButtonActionPerformed
         // TODO add your handling code here:
         if(tarRadioButton.isSelected()){
+            tipoPago="tarjeta";
             efeRadioButton.setEnabled(false);
             jTextField15.setEnabled(true);
             jComboBox7.setEnabled(true);
@@ -1108,10 +1131,12 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String tipoPago;
         if(efeRadioButton.isSelected()){
             jLabel22.setVisible(true);
             double totall;
             totall = total + 5;
+            tipoPago = "efectivo";
             String tota = Double.toString(totall);
             jLabel19.setText(tota);
 
@@ -1121,6 +1146,7 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
             jLabel22.setVisible(true);
             double totall;
             totall = total;
+            tipoPago = "tarjeta";
             String tota = Double.toString(totall);
             jLabel19.setText(tota);
         }
@@ -1135,14 +1161,43 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
 
         
         
-        
 
 
 
 
         
     }//GEN-LAST:event_jButton6ActionPerformed
-
+        public static String generarFacturahtml(String numerofactura1, String codigoPaquete1, String origen1, String destino1, String nit1, String tipoPago1, String tamanoPaquete1, String numeroPaquete1, String total1, String nombre1, String[] Encabezado) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<font font face=\"Arial\">");
+        //DATOS FACTURA
+        sb.append("<h5>").append("Número de Factura: "+numerofactura1).append("</h5>");
+        sb.append("<h5>").append("Código de Paquete: "+codigoPaquete1).append("</h5>");
+        sb.append("<h5>").append("Origen: "+origen1).append("</h5>");
+        sb.append("<h5>").append("Destino: "+destino1).append("</h5>");
+        sb.append("<h5>").append("NIT: "+nit1).append("</h5>");
+        sb.append("<h5>").append("Tipo De Pago: "+tipoPago1).append("</h5>");
+        sb.append("<h5>").append("Nombre: "+nombre1).append("</h5>");
+        // SE CREA LA TABLA
+        sb.append("<table border=\"1\">\n");
+        // FILA 1 ENCABEZADO
+        sb.append("<tr>");
+        for (String encabezado : Encabezado) {
+            sb.append("<th>").append(encabezado).append("</th>");
+        }
+        sb.append("</tr>\n");
+        // FILA 2 DATOS
+        sb.append("<tr>");
+        sb.append("<tr>");
+        sb.append("<td>").append(numeroPaquete1).append("</td>");      
+        sb.append("<td>").append(tamanoPaquete1).append("</td>");   
+        sb.append("<td>").append(total1).append("</td>");   
+        sb.append("</tr>\n");
+        //SE CIERRA LA TABLA
+        sb.append("</table>\n");
+        sb.append("</font>");
+        return sb.toString();
+        }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         String codReg = (String)jComboBox1.getSelectedItem();
@@ -1355,6 +1410,96 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
 
+    private void desfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desfButtonActionPerformed
+        // TODO add your handling code here:
+       
+        String[] Encabezado = {"FACTURA"};
+        String numerofactura1="0012312";
+        String codigoPaquete1="IPC1A-1as12";
+        String origen1=jTextField8.getText();
+        String destino1=jTextField9.getText();
+        String nit1=jTextField14.getText();
+        String tipoPago1=tipoPago;
+        String tamanoPaquete1=tamano;
+        String numeroPaquete1=jTextField10.getText();
+        String total1=jLabel19.getText();
+        String nombre1=jTextField12.getText();
+        
+        String tablaHtml = generarFacturahtml(numerofactura1,codigoPaquete1,origen1,destino1,nit1,tipoPago1,tamanoPaquete1,numeroPaquete1,total1,nombre1,Encabezado);
+        // Crea la carpeta de reportes si no esiste
+        File carpeta = new File("C:\\Users\\admin\\Downloads");
+        if (!carpeta.exists()) {
+            carpeta.mkdirs();
+        }
+
+        
+        try {
+            FileWriter fileWriter = new FileWriter("C:\\Users\\admin\\Downloads\\Factura - "+numerofactura1+".html");
+            fileWriter.write(tablaHtml);
+             JOptionPane.showMessageDialog(null, "Factura Descagada."); 
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        
+    }//GEN-LAST:event_desfButtonActionPerformed
+
+    private void desgButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desgButtonActionPerformed
+        // TODO add your handling code here:
+        String codigoPaquete1="IPC1A-1as12";
+        String origen1=jTextField8.getText();
+        String destino1=jTextField9.getText();
+        String tipoPago1=tipoPago;
+        String tamanoPaquete1=tamano;
+        String numeroPaquete1=jTextField10.getText();
+        String total1=jLabel19.getText();
+        String fechaEnvio1="";
+        String nombre1=jTextField12.getText();
+        
+        String tablaHtml = generarGuiaHTML(codigoPaquete1,origen1,destino1,tipoPago1,tamanoPaquete1,numeroPaquete1,fechaEnvio1,total1,nombre1);
+        // Crea la carpeta de reportes si no esiste
+        File carpeta = new File("C:\\Users\\admin\\Downloads");
+        if (!carpeta.exists()) {
+            carpeta.mkdirs();
+        }
+
+        // Escribe el archivo .html dentro de la carpeta
+        try {
+            FileWriter fileWriter = new FileWriter("C:\\Users\\admin\\Downloads\\Factura-"+"IPC1A-1as12"+".html");
+            fileWriter.write(tablaHtml);
+             JOptionPane.showMessageDialog(null, "Guía Descagada."); 
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_desgButtonActionPerformed
+        
+    public static String generarGuiaHTML(String codigoPaquete,String origen,String destino,String tipoPago,String tamanoPaquete,String numeroPaquete,String fechaEnvio,String totalPago,String nombre) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<font font face=\"Arial\">");
+        
+        sb.append("<tr>");
+        sb.append("<h5>").append("Origen: "+origen).append("</h5>");
+        sb.append("<h5>").append("Destino: "+destino).append("</h5>");
+        sb.append("<h5>").append("Tipo de Pago: "+tipoPago).append("</h5>");
+        sb.append("<h5>").append("Nombre: "+nombre).append("</h5>");
+        sb.append("</tr>");
+        
+        sb.append("<h5>").append("Código de Paquete: "+codigoPaquete).append("</h5>");
+        sb.append("<img src=\" https://i.blogs.es/305b67/2013_04_04_barcode1/1366_2000.jpg \" width=\"650\" height=\"200\">");
+        
+        sb.append("<tr>");
+        sb.append("<h5>").append("Tamaño Del Paquete: "+numeroPaquete).append("</h5>");      
+        sb.append("<h5>").append("Número De Paquetes: "+tamanoPaquete).append("</h5>");   
+        sb.append("<h5>").append("Fecha De Envío: "+fechaEnvio).append("</h5>");  
+        sb.append("<h5>").append("Total A Pagar: "+totalPago).append("</h5>");   
+        sb.append("</tr>\n");
+        
+        sb.append("</font>");
+        return sb.toString();
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1465,4 +1610,6 @@ public class COTPAGOUSUARIOFrame extends javax.swing.JFrame {
     private void JOptionPane(Object object, String procedera_a_pagar) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
 }
